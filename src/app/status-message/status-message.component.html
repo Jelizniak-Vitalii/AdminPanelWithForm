@@ -1,0 +1,4 @@
+<div class="message">
+    <div [style.visibility]="messageError.length > 1 ? 'visible' : 'hidden'" class="message__item error">{{messageError}}</div>
+    <div [style.visibility]="messageSuccess.length > 1 ? 'visible' : 'hidden'" class="message__item success">{{messageSuccess}}</div>
+</div>

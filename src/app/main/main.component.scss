@@ -1,0 +1,57 @@
+@mixin fontHelvetica {
+  font-family: 'Helvetica', 'Open Sans';
+}
+
+.content {
+  display: flex;
+  margin: 10% 0;
+  padding: 0 46px;
+
+  .table {
+    position: relative;
+    margin-right: 26px;
+    max-width: 1218px;
+    width: 1218px;
+    height: 100%;
+    padding-bottom: 76px;
+    border-spacing: 0 2px;
+    background-color: #fff;
+    border-radius: 6px;
+  }
+
+  .content__header {
+    .content__row {
+      .content__item {
+        text-align: inherit;
+        padding: 26px 26px 16px 26px;
+        color: #a4a4b5;
+        font-weight: Bold;
+        font-size: 16px;
+        @include fontHelvetica;
+      }
+    }
+  }
+
+  .content__body {
+    .content__row {
+      .content__item {
+        color: #3f4254;
+        background-color: #F4F5F8;
+        padding: 22px 26px;
+        @include fontHelvetica;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .content {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .table {
+    margin-bottom: 20px;
+  }
+}

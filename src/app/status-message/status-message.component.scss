@@ -1,0 +1,20 @@
+.message {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 56px 46px 11px 46px;
+    .message__item {
+        width: 281px;
+        border-radius: 6px;
+        padding: 22px 26px;
+        color: #fff;
+        font-size: 13px;
+        font-family: 'Helvetica', 'Open Sans';
+    }
+    .success {
+        background-color: #66BB6A;
+    }
+    .error {
+        background-color: #EF7DA0;
+    }
+}

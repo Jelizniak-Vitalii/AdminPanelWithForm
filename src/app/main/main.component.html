@@ -1,0 +1,24 @@
+<div class="content">
+    <table class="table">
+        <app-btn-create-user (click)="createUser()"></app-btn-create-user>
+        <thead class="content__header">
+            <tr class="content__row" >
+                <th class="content__item">USERNAME</th>
+                <th class="content__item">FIRST NAME</th>
+                <th class="content__item">LAST NAME</th>
+                <th class="content__item">EMAIL</th>
+                <th class="content__item">TYPE</th>
+            </tr>
+        </thead>
+        <tbody class="content__body">
+            <tr class="content__row" *ngFor="let item of users; let i = index" (click)="getRow(i)">
+                <td class="content__item">{{item.userName}}</td>
+                <td class="content__item">{{item.firstName}}</td>
+                <td class="content__item">{{item.lastName}}</td>
+                <td class="content__item">{{item.email}}</td>
+                <td class="content__item">{{item.selectStatus}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <app-form-create-user></app-form-create-user>
+</div>

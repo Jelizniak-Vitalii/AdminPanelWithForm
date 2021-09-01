@@ -1,0 +1,63 @@
+<form *ngIf="formStatus" class="form" [formGroup]="form">
+  <div class="form__header">
+    <h4 *ngIf="userName.length < 1; else User" class="form__title">Create new user</h4>
+    <ng-template #User>
+      <h4 class="form__title">{{userName}}</h4>
+    </ng-template>
+    <img (click)="closeForm()" src="../../../assets/images/close.png" alt="close">
+  </div>
+
+  <div class="form__input">
+    <label for="username">Username*</label>
+    <input [ngClass]="form.get('userName')?.invalid && form.get('userName')?.touched ? 'error' : '' " id="username" name="username" type="text" formControlName="userName" placeholder="User name" required="">
+  </div>
+  <div class="form__input">
+    <label for="firstname">First name*</label>
+    <input [ngClass]="form.get('firstName')?.invalid && form.get('firstName')?.touched ? 'error' : '' " id="firstname" name="firstname" type="text" formControlName="firstName" placeholder="First name">
+  </div>
+  <div class="form__input">
+    <label for="lastname">Last name*</label>
+    <input [ngClass]="form.get('lastName')?.invalid && form.get('lastName')?.touched ? 'error' : '' " id="lastname" name="lastname" type="text" formControlName="lastName" placeholder="Last name">
+  </div>
+  <div class="form__input">
+    <label for="email">Email*</label>
+    <input [ngClass]="form.get('email')?.invalid && form.get('email')?.touched ? 'error' : '' " id="email" name="email" type="text" formControlName="email" placeholder="Email">
+    <div *ngIf="form.get('email')?.status == 'INVALID' && form.get('email')?.touched" class="form__validation">
+      <small *ngIf="form.get('email')?.errors?.required">Write something</small>
+      <small *ngIf="form.get('email')?.dirty && form.get('email')?.value.length > 0">Your email is incorrect</small>
+    </div>
+  </div>
+  <span class="select__type">Type*</span>
+  <select [ngClass]="form.get('selectStatus')?.invalid && form.get('selectStatus')?.touched ? 'error' : '' " class="form__select" formControlName="selectStatus">
+    <option>Driver</option>
+    <option>Administrator</option>
+  </select>
+  <div class="form__input">
+    <label for="password">Password*</label>
+    <input [ngClass]="form.get('password')?.invalid && form.get('password')?.touched ? 'error' : '' " id="password" name="password" type="password" formControlName="password" placeholder="Password">
+    <div *ngIf="form.get('password')?.status == 'INVALID' && form.get('password')?.touched" class="form__validation">
+      <small *ngIf="form.get('password')?.errors?.required">Write something</small>
+      <small *ngIf="form.get('password')?.errors?.pattern && form.get('password')?.value.length > 0">Password is
+        incorrect</small>
+    </div>
+  </div>
+  <div class="form__input">
+    <label for="repeatPassword">Repeat Password*</label>
+    <input [ngClass]="form.get('repeatPassword')?.invalid && form.get('repeatPassword')?.touched ? 'error' : '' " id="repeatPassword" name="repeatPassword" type="password" formControlName="repeatPassword"
+           placeholder="Repeat Password">
+    <div *ngIf="form.get('repeatPassword')?.touched"
+         class="form__validation">
+      <small *ngIf="form.get('password')?.value !== form.get('repeatPassword')?.value">Password are different</small>
+    </div>
+  </div>
+
+  <div class="userName.length ? form__btn_create : form__btn_update">
+    <button *ngIf="userName.length < 1; else groupeBtn" class="create__btn" (click)="submit()"
+            [disabled]="form.invalid">Create
+    </button>
+    <ng-template #groupeBtn>
+      <app-btn-delete (click)="delete()"></app-btn-delete>
+      <app-btn-save (click)="updateUsers()"></app-btn-save>
+    </ng-template>
+  </div>
+</form>
