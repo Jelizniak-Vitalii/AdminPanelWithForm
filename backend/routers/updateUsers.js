@@ -9,11 +9,11 @@ routerUpdateUsers.post('/updateUsers', (req, res) => {
      return res.status(400).send({ response: 'User name already exist' }) }
       Users.findOneAndUpdate({userName},
         { $set: { userName, firstName, lastName, selectStatus, password, email } },
-  {new: true}, function(err, result) {
-          if(err) {
-            return  res.status(404).send({ response: 'Server error' });
-          }
-          res.send({ response: 'User is update' })
+          {new: true}, function(err, result) {
+            if(err) {
+              return  res.status(404).send({ response: 'Server error' });
+            }
+            res.send({ response: 'User is update' })
         })
   })
 })
